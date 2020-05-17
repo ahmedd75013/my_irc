@@ -26,15 +26,15 @@ io.on('connection', socket => {
 
     socket.join(user.room);
 
- 
-    socket.emit('message', formatMessage(botName, 'Welcome to ChatCord!'));
+    // Welcome current user
+    socket.emit('message', formatMessage(botName, 'Welcome '));
 
   
     socket.broadcast
       .to(user.room)
       .emit(
         'message',
-        formatMessage(botName, `${user.username} has joined the chat`)
+        formatMessage(botName, `${user.username} `)
       );
 
   
@@ -43,6 +43,35 @@ io.on('connection', socket => {
       users: getRoomUsers(user.room)
     });
   });
+
+  
+  socket.on('chatMessage', msg => {
+    const user = getCurrentUser(socket.id);
+
+    io.to(user.room).emit('message', formatMessage(user.username, msg));
+  });
+
+
+  socket.on('disconnect', () => {
+    const user = userLeave(socket.id);
+
+    if (user) {
+      io.to(user.room).emit(
+        'message',
+        formatMessage(botName, `${user.username} has left the chat`)
+      );
+
+      io.to(user.room).emit('roomUsers', {
+        room: user.room,
+        users: getRoomUsers(user.room)
+      });
+    }
+  });
+});
+
+const PORT = process.env.PORT || 3000;
+
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
   
 
