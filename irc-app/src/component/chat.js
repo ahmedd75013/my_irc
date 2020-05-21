@@ -10,11 +10,11 @@ var NewComponent = React.createClass({
         <div className="chat-container">
           <header className="chat-header">
             <h1><i className="fas fa-smile" /> Chat</h1>
-            <a href="index.html" className="btn">Leave Room</a>
+            <a href="index.html" className="btn"></a>
           </header>
           <main className="chat-main">
             <div className="chat-sidebar">
-              <h3><i className="fas fa-comments" /> Room Name:</h3>
+              <h3><i className="fas fa-comments" />  Name:</h3>
               <h2 id="room-name" />
               <h3><i className="fas fa-users" /> Users</h3>
               <ul id="users">

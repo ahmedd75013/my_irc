@@ -23,10 +23,10 @@ var NewComponent = React.createClass({
                   <select name="room" id="room">
                     <option value="Jss">ggg</option>
                     <option value="ddd">xxx</option>
-                    <option value="fff">ssss</option>
+                    <option value="fff">ff</option>
                     <option value="eee">aaaa</option>
                     <option value="errr">qqq</option>
-                    <option value="ffff">jjj</option>	
+                    <option value="ffff">hh</option>	
                   </select>
                 </div>
                 <button type="submit" className="btn">Join Chat</button>
