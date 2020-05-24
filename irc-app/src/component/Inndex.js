@@ -1,3 +1,5 @@
+import React, { Component } from 'react';
+
 var NewComponent = React.createClass({
     render: function() {
       return (
